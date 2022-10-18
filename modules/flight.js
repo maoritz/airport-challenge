@@ -1,8 +1,8 @@
 import {EventEmitter} from 'events'
 import dayjs from 'dayjs'
+import log from '@ajar/marker'; 
 
 // import flightManager from './flightsManager'
-
 
 export class Flight extends EventEmitter {
     #random = Math.round(Math.random() * 3000 + 2000) 
@@ -36,25 +36,23 @@ export class Flight extends EventEmitter {
     set arrived(value){throw new Error('Read only property')}
 
 
-    depart() {
-        this.#departed = dayjs().format('DD/MM/YYYY,HH:mm:ss')
+    #arrive = () => {
+        this.#arrived = dayjs().format('DD/MM/YYYY,HH:mm:ss')
+        log.cyan('Arrived:',`${this.arrived}`)
+}
 
+    depart = () => {
         setTimeout(() => {
-                this.emit('depart') 
-
-        }, this.#random);
-    }
-
-
-    #arrive(){
-        this.#arrived = dayjs().format('DD/MM/YYYY,HH:mm:ss') 
-
-        setTimeout(() => {
-            this.#arrive
+            this.#departed = dayjs().format('DD/MM/YYYY,HH:mm:ss')
+            this.emit('depart') 
         }, this.#random);
 
-        this.emit('FLIGHT ARRAVIED',this)
+        setTimeout( ()=> { 
+            this.#arrive();
+         }, this.#random + 5000 );
+
     }
+
 }
 
 // const example = new Flight('h','h','h')

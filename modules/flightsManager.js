@@ -18,20 +18,35 @@ import log from '@ajar/marker';
 
         const newFlight = new Flight(number, origin, destination); // create a new flight
 
-        newFlight.on("depart", function (){
-            log.magenta('departed: ',newFlight.departed)
+        newFlight.on('depart',  () =>{
+            log.magenta('Departed: ', newFlight.departed)
         } ); // listen to flight emitter (located in flight.mjs module)
-    
+
         counter += 1; // increse counter
         // pushUniqueDestination(destination); // add unique destinations to list
     
          // call depart method
-         newFlight.depart()
-      
+         
+         newFlight.depart()  
+         
     }
+
+    // const showUniqueInfo = () => {
+    //     log.magenta('=======================')
+    //     log.yellow(counter,' flights were created')
+    //     log.cyan(`${destination}: `)
+    // }
+
 
     export {
         uniqueDestination,
         createFlight,
-        counter,
+        counter
+        // showUniqueInfo
     }
+
+
+
+    // newFlight.on('FLIGHT ARRAVIED', function (){
+    //     log.cyan('Arrived: ',newFlight.arrived)
+    // } );
