@@ -22,31 +22,14 @@ import log from '@ajar/marker';
             log.magenta('Departed: ', newFlight.departed)
         } ); // listen to flight emitter (located in flight.mjs module)
 
-        counter += 1; // increse counter
-        // pushUniqueDestination(destination); // add unique destinations to list
-    
-         // call depart method
+        counter ++; // increse counter
          
          newFlight.depart()  
          
     }
 
-    // const showUniqueInfo = () => {
-    //     log.magenta('=======================')
-    //     log.yellow(counter,' flights were created')
-    //     log.cyan(`${destination}: `)
-    // }
-
-
     export {
         uniqueDestination,
         createFlight,
         counter
-        // showUniqueInfo
     }
-
-
-
-    // newFlight.on('FLIGHT ARRAVIED', function (){
-    //     log.cyan('Arrived: ',newFlight.arrived)
-    // } );
